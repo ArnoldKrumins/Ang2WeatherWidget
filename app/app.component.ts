@@ -5,12 +5,14 @@ import {Component} from 'angular2/core';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {CityLister} from './components/citylister'
 import {WeatherService} from "./services/WeatherService";
+import {WeatherWidgets} from "./components/weatherwidgets";
 
 @Component({
     selector: 'my-app',
     providers:[WeatherService],
-    directives:[CityLister],
-    template: '<h1>Hello First Angular 2 App</h1><city-lister></city-lister><button (click)="getWeather()">Get Weather</button>'
+    directives:[CityLister,WeatherWidgets],
+    template: `<city-lister></city-lister><button (click)="getWeather()">Get Weather</button>
+                <weather-widgets></weather-widgets>`
 })
 export class AppComponent {
 
@@ -18,7 +20,7 @@ export class AppComponent {
     data:any;
 
     constructor(service: WeatherService) {
-        this.data = service.getData('104');
+        this.data = service.getData();
     }
 
     getWeather(){

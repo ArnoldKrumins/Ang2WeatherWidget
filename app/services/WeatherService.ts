@@ -1,8 +1,8 @@
 /**
  * Created by arnoldkrumins on 15/12/2015.
  */
-import {Http, HTTP_PROVIDERS,} from 'angular2/http';
 import {Injectable,Inject} from 'angular2/core';
+import {Http, HTTP_PROVIDERS,BaseRequestOptions} from 'angular2/http';
 
 @Injectable()
 export class WeatherService{
@@ -20,8 +20,20 @@ export class WeatherService{
 
     http:Http;
 
+    cities: any[];
+
+    /*constructor(http:Http){
+        this.http = http;
+    }*/
 
     getData(){
        return this.data;
+    }
+
+   getNetData(){
+        this.http.get('./data/cities.json').subscribe(res => {
+            this.cities = res.json();
+        });
+        return this.cities;
     }
 }

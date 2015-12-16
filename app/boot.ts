@@ -5,4 +5,4 @@ import {bootstrap}    from 'angular2/platform/browser'
 import {AppComponent} from './app.component'
 import {WeatherService} from "./services/WeatherService";
 
-bootstrap(AppComponent,[WeatherService]);
+bootstrap(AppComponent,[WeatherService]).catch(err => console.error(err));;
