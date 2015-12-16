@@ -19,10 +19,12 @@ import {WeatherService} from "../services/WeatherService";
 })
 export class WeatherWidgets {
 
-    data:any[];
+    data:string;
+    service:WeatherService
 
-    constructor(public service:WeatherService){
-        this.data = service.getData();
+    constructor(service:WeatherService){
+        this.service = service;
+        this.data = this.service.getData();
     }
 
 }
