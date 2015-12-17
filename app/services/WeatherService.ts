@@ -18,21 +18,23 @@ export class WeatherService {
         {id:'5',name:'Sydney'},
         ];
 
-   //http:Http;
+
+    //http:Http;
 
     cities: any[];
 
-    //constructor(public http:Http){
-        //this.http = http;
-    //}
+
+    /*constructor(public http:Http){
+
+    }*/
 
     getData(){
        return this.data;
     }
 
-  /* getNetData(){
+   /*getNetData(){
 
-         this.http.get('./data/cities.json').subscribe(res => {
+         this.http.get('cities.json').subscribe(res => {
             this.cities = res.json();
         });
        return this.cities;

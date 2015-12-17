@@ -4,5 +4,8 @@
 import {bootstrap}    from 'angular2/platform/browser'
 import {AppComponent} from './app.component'
 import {WeatherService} from "./services/WeatherService";
+import {HTTP_PROVIDERS} from "angular2/http";
 
-bootstrap(AppComponent,[WeatherService]);
+
+
+bootstrap(AppComponent,[WeatherService,HTTP_PROVIDERS]);
