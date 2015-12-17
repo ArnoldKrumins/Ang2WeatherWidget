@@ -10,7 +10,7 @@ export class WeatherService {
     private key:string ='876a061edb38ada7e9f7206d03e0fffb';
     private url:string = 'http://api.openweathermap.org/data/2.5/weather?q=';
 
-    private data:any[] = [
+    private cities:any[] = [
         {id:'1',name:'London'},
         {id:'2',name:'Gothenburg'},
         {id:'3',name:'Melbourne'},
@@ -18,25 +18,21 @@ export class WeatherService {
         {id:'5',name:'Sydney'},
         ];
 
+    wdata:any;
+    error:any;
 
-    //http:Http;
+    constructor(public http:Http){}
 
-    cities: any[];
-
-
-    /*constructor(public http:Http){
-
-    }*/
-
-    getData(){
-       return this.data;
+    getCities(){
+       return this.cities;
     }
 
-   /*getNetData(){
-
-         this.http.get('cities.json').subscribe(res => {
-            this.cities = res.json();
-        });
-       return this.cities;
-    }*/
+    getData() {
+        this.http.get('http://api.openweathermap.org/data/2.5/weather?q=q=London,uk&appid=876a061edb38ada7e9f7206d03e0fffb')
+            .subscribe(
+                data => this.wdata = data,
+                err => this.error(err),
+                () => console.log(this.wdata)
+            );
+    }
 }

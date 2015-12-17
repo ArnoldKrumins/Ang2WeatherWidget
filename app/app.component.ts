@@ -11,22 +11,23 @@ import {WeatherWidgets} from "./components/weatherwidgets";
     selector: 'my-app',
     providers:[WeatherService],
     directives:[CityLister,WeatherWidgets],
-    template: `<city-lister></city-lister><button (click)="getWeatherData()">Get Weather</button>
+    template: `<city-lister></city-lister><button (click)="getWeather()">Get Weather</button>
                 <weather-widgets></weather-widgets>`
 })
 export class AppComponent {
 
-    //service:WeatherService;
     data:any;
     error:any;
 
+
     constructor(public service: WeatherService, public http:Http) {
-        this.data = service.getData();
+        this.data = service.getCities();
     }
 
     getWeather(){
-        console.log(this.data);
+        this.service.getData();
     }
+
 
     getWeatherData() {
         this.http.get('http://api.openweathermap.org/data/2.5/weather?q=q=London,uk&appid=876a061edb38ada7e9f7206d03e0fffb')
