@@ -18,5 +18,7 @@ export class Highlight {
     private _highlight(color: string,style:string) {
         this.renderer.setElementStyle(this.el, 'backgroundColor', color);
         this.renderer.setElementStyle(this.el, 'cursor', style);
+
+        //TweenMax.fromTo(this.el, 1.5, {width:0, height:0}, {width:100, height:200});
     }
 }
