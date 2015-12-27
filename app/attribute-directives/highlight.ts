@@ -22,6 +22,6 @@ export class Highlight {
     }
 
     private _pulse(){
-        TweenMax.to(this.el.nativeElement, 0.1, {scaleX:0.9, scaleY:0.9, force3D:true, yoyo:true, repeat:1, ease:Power1.easeInOut});
+        //TweenMax.to(this.el.nativeElement, 0.1, {scaleX:0.9, scaleY:0.9, force3D:true, yoyo:true, repeat:1, ease:Power1.easeInOut});
     }
 }

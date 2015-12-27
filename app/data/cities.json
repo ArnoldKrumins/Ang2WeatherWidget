@@ -1,23 +1,32 @@
 [
   {
+    "id":1,
   "name": "London"
 },{
+  "id":2,
   "name": "Gothenburg"
 },{
+  "id":3,
   "name": "Stockholm"
 },
   {
+    "id":4,
     "name": "Edinburgh"
   },{
+  "id":5,
   "name": "Glasgow"
 },{
+  "id":6,
   "name": "New York"
 },
   {
+    "id":7,
     "name": "Paris"
   },{
+  "id":8,
   "name": "Singapore"
 },{
+  "id":9,
   "name": "Tokyo"
 }
 ]
