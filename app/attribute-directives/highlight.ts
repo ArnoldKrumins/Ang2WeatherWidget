@@ -13,7 +13,7 @@ import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
 export class Highlight {
     constructor(private el: ElementRef, private renderer: Renderer) {
     }
-    onMouseEnter() { this._highlight("brown",'pointer');this._pulse(); }
+    onMouseEnter() { this._highlight("green",'pointer');this._pulse(); }
     onMouseLeave() { this._highlight(null,null); }
     private _highlight(color: string,style:string) {
         this.renderer.setElementStyle(this.el, 'backgroundColor', color);
@@ -22,6 +22,6 @@ export class Highlight {
     }
 
     private _pulse(){
-        //TweenMax.to(this.el.nativeElement, 0.1, {scaleX:0.9, scaleY:0.9, force3D:true, yoyo:true, repeat:1, ease:Power1.easeInOut});
+        TweenMax.to(this.el.nativeElement, 0.1, {scaleX:0.9, scaleY:0.9, force3D:true, yoyo:true, repeat:1, ease:Power1.easeInOut});
     }
 }

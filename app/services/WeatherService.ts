@@ -55,7 +55,7 @@ export class WeatherService {
         .subscribe(
                 data => this.wdata = data,
                 err => this.error(err),
-                () => {return this.wdata}
+                () => console.log(this.wdata)
             );
 
         return this.wdata;
