@@ -3,12 +3,14 @@
  */
 export class weatherstats{
 
-    constructor(
-        public temp:number,
-        public minTemp:number,
-        public maxTemp:number,
-        public windSpeed: number,
-        public windDirection:number,
-        public cloudCover:number
-    ){}
+    public temperture:number;
+    //public minTemp:number;
+    //public maxTemp:number;
+    //public windSpeed: number;
+    //public windDirection:number;
+    //public cloudCover:number;
+
+    constructor(temperture:number){
+        this.temperture = temperture;
+    }
 }

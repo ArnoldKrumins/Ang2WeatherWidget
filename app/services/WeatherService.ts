@@ -6,7 +6,8 @@ import {Http, HTTP_PROVIDERS,Response} from 'angular2/http';
 import 'rxjs/add/operator/map';
 
 import {city} from '../models/city';
-import {Observable} from "rxjs/Observable";
+import {weatherstats} from '../models/weatherstats';
+
 
 @Injectable()
 export class WeatherService {
@@ -14,50 +15,42 @@ export class WeatherService {
     private key:string ='876a061edb38ada7e9f7206d03e0fffb';
     private url:string = 'http://api.openweathermap.org/data/2.5/weather?q=';
 
-    /*private cities:any[] = [
-        {id:'1',name:'London'},
-        {id:'2',name:'Gothenburg'},
-        {id:'3',name:'Melbourne'},
-        {id:'4',name:'New York'},
-        {id:'5',name:'Sydney'},
-        ];*/
-
-    cities:any;
-    wdata:any;
-    error:any;
-
-
-
+    private cities:Array<city> = [];
 
     constructor(public http:Http){}
 
-    /*
-    getCities(){
-       console.log(this.cities);
-       return this.cities;
-    }*/
-
-    getCities(){
+    getCities():any {
 
         return this.http.get('./app/data/cities.json')
-        .map(res=> (<Response>res).json())
+            .map(res=> res.json())
+            .map((cities: Array<any>) => {
+                let result: Array<city> = [];
+                if (cities) {
+                    cities.forEach(c => {
+                        result.push(
+                            new city(
+                                c.id,
+                                c.name
+                            ));
+                    });
+                }
 
+                return result;
+            });
 
-           .subscribe(
-                data => this.cities = data,
-                err => this.error(err),
-                () => console.log(this.cities));return this.cities;
     }
 
 
-    getData():any{
-        this.http.get('http://api.openweathermap.org/data/2.5/weather?q=q=London,uk&appid=876a061edb38ada7e9f7206d03e0fffb')
-        .subscribe(
-                data => this.wdata = data,
-                err => this.error(err),
-                () => console.log(this.wdata)
-            );
+    getWeather():any{
+        return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=q=London,uk&appid=876a061edb38ada7e9f7206d03e0fffb')
+            .map(res=> res.json())
+            .map((stats: any) => {
+                let result : weatherstats = new weatherstats(0);
+                if (stats) {
+                    result.temperture = stats.main.temp ;
+                }
+                return result;
+            });
 
-        return this.wdata;
     }
 }
