@@ -8,21 +8,22 @@ import {weatherstats} from '../models/weatherstats';
 
 import 'rxjs/add/operator/map';
 import {WeatherService} from "../services/WeatherService";
+
 import {Highlight} from "../attribute-directives/highlight";
+import {WeatherStatistics} from "./weatherstats";
 
 
 
 @Component({
     selector: 'weather-widgets',
     providers:[WeatherService],
-    directives:[Highlight],
+    directives:[Highlight,WeatherStatistics],
     template: `<div class="weather-widgets col-sm-12 col-md-12 col-lg-12">
                   <ul>
-                    <li *ngFor="#c of cities">
+                    <li *ngFor="#city of cities">
                         <div myHighlight class="widget">
-                          <strong><p>{{ c.name }}</p></strong>
-                          <button class="btn btn-sm btn-success" (click)="getWeather()">Get Weather</button>
-                             <p>{{ stats.temperture }}</p>
+                          <strong><p>{{ city.name }}</p></strong>
+                             <weather-statistics [stats]="stats" [cityname]="city.name"></weather-statistics>
                         </div>
                     </li>
                   </ul>
@@ -47,15 +48,6 @@ export class WeatherWidgets {
         );
     };
 
-    getWeather(){
-        this.service.getWeather()
-        .subscribe(
-            data => {
-                this.stats = data;
-                console.log(this.stats);
-            },
-            error => console.log(error)
-        );
-    }
+
 
 }

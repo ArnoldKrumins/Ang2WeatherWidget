@@ -41,8 +41,8 @@ export class WeatherService {
     }
 
 
-    getWeather():any{
-        return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=q=London,uk&appid=876a061edb38ada7e9f7206d03e0fffb')
+    getWeather(cityname:string):any{
+        return this.http.get(this.url.concat(cityname,'&appid=',this.key))
             .map(res=> res.json())
             .map((stats: any) => {
                 let result : weatherstats = new weatherstats(0);
