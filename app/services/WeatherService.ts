@@ -45,9 +45,11 @@ export class WeatherService {
         return this.http.get(this.url.concat(cityname,'&appid=',this.key))
             .map(res=> res.json())
             .map((stats: any) => {
-                let result : weatherstats = new weatherstats(0);
+                let result : weatherstats = new weatherstats();
                 if (stats) {
-                    result.temperture = stats.main.temp ;
+                    result.weather = stats.weather[0].main;
+                    result.description = stats.weather[0].description;
+
                 }
                 return result;
             });

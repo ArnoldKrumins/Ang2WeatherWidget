@@ -35,7 +35,7 @@ import {WeatherStatistics} from "./weatherstats";
 export class WeatherWidgets {
 
     public cities:Array<city> = [];
-    public stats: weatherstats = new weatherstats(0);
+    public stats: weatherstats = new weatherstats();
 
     constructor(public service:WeatherService){
         this.service.getCities()

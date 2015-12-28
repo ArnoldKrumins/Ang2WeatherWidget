@@ -8,9 +8,13 @@ import {WeatherService} from "../services/WeatherService";
 @Component({
     selector: 'weather-statistics',
     providers:[WeatherService],
-    template: `<div>
+    styles:[`.weather-stats{ color:#FFF;}`,`.weather-stats div { margin-top:5px; }`,`.weather-stats p { margin-bottom:-5px; }`],
+    template: `<div class="weather-stats">
                 <button class="btn btn-sm btn-success" (click)="getWeather(cityname)">Get Weather</button>
-                <p>{{ stats.temperture }}</p>
+                    <div>
+                        <p>{{ stats.weather }}</p>
+                        <p>{{ stats.description }}</p>
+                    </div>
                </div>`
 })
 export class WeatherStatistics {
