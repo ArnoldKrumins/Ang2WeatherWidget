@@ -4,13 +4,14 @@
 import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
 
 @Directive({
-    selector: '[spinner]',
-    host: {
-        '(mouseenter)': 'onMouseEnter()',
-        '(mouseleave)': 'onMouseLeave()'
-    }
+    selector: '[mySpinner]'
 })
-export class Spinner {
+
+
+export class SpinnerProgress {
+
+    @Input() busy:boolean;
+
 
      private spinner;
      private opts;
@@ -36,17 +37,29 @@ export class Spinner {
             left: '50%' // Left position relative to parent
         };
 
+        this.spinner = new Spinner(this.opts);
 
+        console.log(this.busy);
+
+        if(this.busy){
+            this.Start();
+        }else{
+            this.Stop();
+        }
     }
-    //onMouseEnter() { this._highlight("green",'pointer');this._pulse(); }
-    //onMouseLeave() { this._highlight(null,null); }
-    //private _highlight(color: string,style:string) {
-    //    this.renderer.setElementStyle(this.el, 'backgroundColor', color);
-    //    this.renderer.setElementStyle(this.el, 'cursor', style);
-    //
-    //}
 
-    //private _pulse(){
-    //    TweenMax.to(this.el.nativeElement, 0.1, {scaleX:0.9, scaleY:0.9, force3D:true, yoyo:true, repeat:1, ease:Power1.easeInOut});
-    //}
+    private Start(){
+
+        this.spinner.spin();
+        this.el.nativeElement.append(this.spinner.el);
+    }
+
+    private Stop(){
+        this.spinner.stop();
+    }
+
+
+    get(){
+        console.log('hello');
+    }
 }
