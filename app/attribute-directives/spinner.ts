@@ -1,17 +1,16 @@
 /**
  * Created by arnoldkrumins on 29/12/2015.
  */
+
 import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
 
 @Directive({
     selector: '[mySpinner]'
 })
 
-
 export class SpinnerProgress {
 
     @Input() busy:boolean;
-
 
      private spinner;
      private opts;
