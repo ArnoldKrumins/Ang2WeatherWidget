@@ -11,9 +11,15 @@ import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
     }
 })
 export class Highlight {
+
+    @Input('myHighlight') colour: string;
+
     constructor(private el: ElementRef, private renderer: Renderer) {
     }
-    onMouseEnter() { this._highlight("green",'pointer');this._pulse(); }
+
+
+
+    onMouseEnter() { this._highlight(this.colour,'pointer');this._pulse(); }
     onMouseLeave() { this._highlight(null,null); }
     private _highlight(color: string,style:string) {
         this.renderer.setElementStyle(this.el, 'backgroundColor', color);

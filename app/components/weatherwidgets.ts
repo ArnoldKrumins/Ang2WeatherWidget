@@ -21,7 +21,7 @@ import {WeatherStatistics} from "./weatherstats";
     template: `<div class="weather-widgets col-sm-12 col-md-12 col-lg-12">
                   <ul>
                     <li *ngFor="#city of cities">
-                        <div myHighlight class="widget">
+                        <div [myHighlight]="colour" class="widget">
                           <strong><p>{{ city.name }}</p></strong>
                              <weather-statistics [stats]="stats" [cityname]="city.name"></weather-statistics>
                         </div>
@@ -34,6 +34,8 @@ import {WeatherStatistics} from "./weatherstats";
 })
 export class WeatherWidgets {
 
+
+    public colour:string = "yellow";
     public cities:Array<city> = [];
     public stats: weatherstats = new weatherstats();
 
