@@ -11,6 +11,7 @@ import {WeatherService} from "../services/WeatherService";
 
 import {Highlight} from "../attribute-directives/highlight";
 import {WeatherStatistics} from "./weatherstats";
+import {timeout} from "rxjs/operator/timeout";
 
 
 

@@ -1,15 +1,10 @@
 /**
  * Created by arnoldkrumins on 29/12/2015.
  */
-
 import {Directive, ElementRef, Renderer, Input} from 'angular2/core';
-//import {Component} from 'angular2/core';
 
 @Directive({
     selector: '[mySpinner]'
-    //host: {
-    //    '(busy)': 'toggleBusy()'
-    //}
 })
 
 export class SpinnerProgress {
@@ -36,34 +31,19 @@ export class SpinnerProgress {
 
     };
 
-
-
     constructor(private el: ElementRef, private renderer: Renderer) {
-
         this.spinner = new Spinner(this.opts);
     }
 
-
     @Input('mySpinner') set busy(busy: boolean) {
         if (busy){
-            console.log(busy);
-
             this.spinner.spin();
-            //this.el.nativeElement..attachFragmentAfterElement(this.el,this.spinner.el);
+            this.el.nativeElement.appendChild(this.spinner.el);
+
         }else{
-            console.log(busy);
             this.spinner.stop();
         }
 
     }
-
-
-
-
-
-
-
-
-
 
 }

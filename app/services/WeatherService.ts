@@ -4,6 +4,7 @@
 import {Injectable,Inject} from 'angular2/core';
 import {Http, HTTP_PROVIDERS,Response} from 'angular2/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/delay';
 
 import {city} from '../models/city';
 import {weatherstats} from '../models/weatherstats';
@@ -43,6 +44,7 @@ export class WeatherService {
 
     getWeather(cityname:string):any{
         return this.http.get(this.url.concat(cityname,'&appid=',this.key))
+            .delay(3000)
             .map(res=> res.json())
             .map((stats: any) => {
                 let result : weatherstats = new weatherstats();
