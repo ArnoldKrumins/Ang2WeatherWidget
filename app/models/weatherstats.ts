@@ -6,6 +6,7 @@ export class weatherstats{
     public temperture:number;
     public weather:string;
     public description:string;
+    public icon:number;
     //public minTemp:number;
     //public maxTemp:number;
     //public windSpeed: number;
@@ -16,5 +17,5 @@ export class weatherstats{
     //    this.temperture = temperture;
     //}
 
-    constructor(){}
+    //constructor(){}
 }

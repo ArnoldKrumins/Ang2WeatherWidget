@@ -44,12 +44,13 @@ export class WeatherService {
 
     getWeather(cityname:string):any{
         return this.http.get(this.url.concat(cityname,'&appid=',this.key))
-            .delay(3000)
+            .delay(1000)
             .map(res=> res.json())
             .map((stats: any) => {
                 let result : weatherstats = new weatherstats();
                 if (stats) {
-                    result.weather = stats.weather[0].main;
+                    result.weather     = stats.weather[0].main;
+                    result.icon        = stats.weather[0].id;
                     result.description = stats.weather[0].description;
 
                 }

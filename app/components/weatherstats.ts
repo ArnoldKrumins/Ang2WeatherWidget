@@ -5,28 +5,41 @@ import {Component,Input,Output,EventEmitter} from 'angular2/core';
 import {weatherstats} from "../models/weatherstats";
 import {WeatherService} from "../services/WeatherService";
 import {SpinnerProgress} from '../attribute-directives/spinner';
+import {IconService} from "../services/IconService";
 
 @Component({
     selector: 'weather-statistics',
-    providers:[WeatherService],
+    providers:[WeatherService,IconService],
     directives:[SpinnerProgress],
-    styles:[`.weather-stats{ color:#FFF;}`,`.weather-stats div { margin-top:5px; }`,`.weather-stats p { margin-bottom:-5px; }`],
+    styles:[`.weather-stats{ color:#FFF;}`,`.weather-stats div { margin-top:5px; }`,`.weather-stats p { margin-bottom:-5px; }`,`.weather-stats i{ font-size:50px; }`],
     template: `<div [mySpinner]="busy" class="weather-stats">
                 <button class="btn btn-sm btn-success" (click)="getWeather(cityname)">Get Weather</button>
                     <div>
                         <p>{{ stats.weather }}</p>
                         <p>{{ stats.description }}</p>
+                        <i class="wi {{ getIcon(stats.icon) }}"></i>
                     </div>
                </div>`
 })
-export class WeatherStatistics {
+export class WeatherStatistics implements OnInit {
 
-    @Input() stats: weatherstats;
-    @Input() cityname: string;
+    ngOnInit() {
 
-    public busy:boolean = false;
+       // console.log(this.cityname);
+       // this.getWeather(this.cityname);
+    }
 
-    constructor(public service: WeatherService){}
+    @Input() cityname;
+
+    private stats: weatherstats = new weatherstats();
+    private busy:boolean = false;
+    private icon:string;
+
+    constructor(public service: WeatherService,public iconService: IconService){}
+
+    getIcon(icon:number):string{
+        return this.iconService.getIcon(icon);
+    }
 
     getWeather(cityname:string){
         this.busy = true;

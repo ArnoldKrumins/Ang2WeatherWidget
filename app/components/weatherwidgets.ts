@@ -24,7 +24,7 @@ import {timeout} from "rxjs/operator/timeout";
                     <li *ngFor="#city of cities">
                         <div [myHighlight]="colour" class="widget">
                           <strong><p>{{ city.name }}</p></strong>
-                             <weather-statistics [stats]="stats" [cityname]="city.name"></weather-statistics>
+                             <weather-statistics [cityname]="city.name"></weather-statistics>
                         </div>
                     </li>
                   </ul>
@@ -38,7 +38,7 @@ export class WeatherWidgets {
 
     public colour:string = "yellow";
     public cities:Array<city> = [];
-    public stats: weatherstats = new weatherstats();
+    //public stats: weatherstats = new weatherstats();
 
     constructor(public service:WeatherService){
         this.service.getCities()
