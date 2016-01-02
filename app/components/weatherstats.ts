@@ -54,3 +54,11 @@ export class WeatherStatistics implements OnInit {
             );
     }
 }
+
+
+
+//this.http.get('something')
+//    .flatMap((result: any) => this.http.post('somethingElse', result))
+//    .subscribe((lastResult: any) => {
+//        console.log(lastResult); //result of second http post
+//    });

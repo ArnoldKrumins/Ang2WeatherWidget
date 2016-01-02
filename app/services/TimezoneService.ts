@@ -5,6 +5,7 @@ import {Http, HTTP_PROVIDERS,Response} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
 
+@Injectable()
 export class TimezoneService implements api{
 
     url:string = "http://api.timezonedb.com/";

@@ -1,5 +1,6 @@
 /bower_components
 # Created by .ignore support plugin (hsz.mobi)
-/.idea
-/.idea/typescript-compiler.xml
+
+/.idea/watcherTasks.xml
 /node_modules
+.idea
