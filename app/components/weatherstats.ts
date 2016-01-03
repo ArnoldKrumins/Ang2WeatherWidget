@@ -11,7 +11,7 @@ import {IconService} from "../services/IconService";
     selector: 'weather-statistics',
     providers:[WeatherService,IconService],
     directives:[SpinnerProgress],
-    styles:[`.weather-stats{ color:#FFF;}`,`.weather-stats div { margin-top:5px; }`,`.weather-stats p { margin-bottom:-5px; }`,`.weather-stats i{ font-size:50px; }`],
+    styles:[`.weather-stats{ color:#FFF;}`,`.weather-stats div { margin-top:5px; }`,`.weather-stats p { margin-bottom:-5px; }`,`.weather-stats i{ font-size:50px;margin-top:20px; }`],
     template: `<div [mySpinner]="busy" class="weather-stats">
                 <button class="btn btn-sm btn-success" (click)="getWeather(cityname)">Get Weather</button>
                     <div>

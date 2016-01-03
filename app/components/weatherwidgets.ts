@@ -19,6 +19,7 @@ import {timeout} from "rxjs/operator/timeout";
     selector: 'weather-widgets',
     providers:[WeatherService],
     directives:[Highlight,WeatherStatistics],
+    styles:[`.weather-widgets li {float:left;}`],
     template: `<div class="weather-widgets col-sm-12 col-md-12 col-lg-12">
                   <ul>
                     <li *ngFor="#city of cities">
@@ -36,9 +37,9 @@ import {timeout} from "rxjs/operator/timeout";
 export class WeatherWidgets {
 
 
-    public colour:string = "yellow";
+    public colour:string = "#606060";
     public cities:Array<city> = [];
-    //public stats: weatherstats = new weatherstats();
+
 
     constructor(public service:WeatherService){
         this.service.getCities()
