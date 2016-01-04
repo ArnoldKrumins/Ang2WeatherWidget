@@ -6,10 +6,11 @@ import {weatherstats} from "../models/weatherstats";
 import {WeatherService} from "../services/WeatherService";
 import {SpinnerProgress} from '../attribute-directives/spinner';
 import {IconService} from "../services/IconService";
+import {TimezoneService} from "../services/TimezoneService";
 
 @Component({
     selector: 'weather-statistics',
-    providers:[WeatherService,IconService],
+    providers:[WeatherService,IconService,TimezoneService],
     directives:[SpinnerProgress],
     styles:[`.weather-stats{ color:#FFF;}`,`.weather-stats div { margin-top:5px; }`,`.weather-stats p { margin-bottom:-5px; }`,`.weather-stats i{ font-size:50px;margin-top:20px; }`],
     template: `<div [mySpinner]="busy" class="weather-stats">
@@ -35,7 +36,7 @@ export class WeatherStatistics implements OnInit {
     private busy:boolean = false;
     private icon:string;
 
-    constructor(public service: WeatherService,public iconService: IconService){}
+    constructor(public service: WeatherService,public iconService: IconService,public timezomeService:TimezoneService){}
 
     getIcon(icon:number):string{
         return this.iconService.getIcon(icon);
