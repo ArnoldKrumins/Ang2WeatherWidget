@@ -7,10 +7,11 @@ import {WeatherService} from "../services/WeatherService";
 import {SpinnerProgress} from '../attribute-directives/spinner';
 import {IconService} from "../services/IconService";
 import {TimezoneService} from "../services/TimezoneService";
+import {LoggerService} from "../services/LoggerService";
 
 @Component({
     selector: 'weather-statistics',
-    providers:[WeatherService,IconService,TimezoneService],
+    providers:[WeatherService,IconService,TimezoneService,LoggerService],
     directives:[SpinnerProgress],
     styles:[`.weather-stats{ color:#FFF;}`,`.weather-stats div { margin-top:5px; }`,`.weather-stats p { margin-bottom:-5px; }`,`.weather-stats i{ font-size:50px;margin-top:20px; }`],
     template: `<div [mySpinner]="busy" class="weather-stats">
@@ -36,7 +37,12 @@ export class WeatherStatistics implements OnInit {
     private busy:boolean = false;
     private icon:string;
 
-    constructor(public service: WeatherService,public iconService: IconService,public timezomeService:TimezoneService){}
+    constructor(
+        public service: WeatherService,
+        public iconService: IconService,
+        public timezomeService:TimezoneService,
+        public loggerService:LoggerService
+    ){}
 
     getIcon(icon:number):string{
         return this.iconService.getIcon(icon);
@@ -51,7 +57,7 @@ export class WeatherStatistics implements OnInit {
                     console.log(this.stats);
                     this.busy=false;
                 },
-                error => console.log(error)
+                error => this.loggerService.error(error)
             );
     }
 }
